@@ -1,22 +1,50 @@
 # Bayanno Hospital Management System
 
-This repository is a CodeIgniter project. It is not a Laravel application and should be run as a CodeIgniter app only.
+This repository contains a CodeIgniter-based hospital management system for patient, doctor, and administrative workflows. It is not a Laravel project and should be run as a standard CodeIgniter application.
 
-## Project type
-- Framework: CodeIgniter
-- PHP version: PHP 8.x
-- Database: MySQL
-- Local development: PHP built-in server or Apache/Nginx virtual host
+## What the system does
 
-## Local startup
+The platform is designed around a hospital workflow with role-based dashboards for:
 
-1. Open a terminal in the project root.
-2. Make sure MySQL is running and the database exists.
-3. Start the app with the built-in PHP server:
+- Admin
+- Doctor
+- Patient
+- Nurse
+- Receptionist
+- Laboratorist
+- Pharmacist
+- Accountant
+
+Each role logs in through the same login page but is redirected to a different section based on the matching user table in the database. The login controller checks each table in turn and sets the session variables for the correct role.
+
+## How it works
+
+1. The user visits the login page at `/index.php/login` or the web root.
+2. The application checks the submitted email and password against the relevant role table.
+3. The credentials are hashed using `sha1()` before comparison.
+4. If the email/password matches a record in `admin`, `doctor`, `patient`, `nurse`, `receptionist`, `laboratorist`, `pharmacist`, or `accountant`, the session is set for that role.
+5. The user is redirected to the dashboard for that role.
+6. Each role-specific controller manages its own views, patients, appointments, reports, invoices, and administrative actions.
+
+## Project structure
+
+- `application/controllers/` — role controllers and login logic
+- `application/models/` — CRUD and logic models
+- `application/views/` — frontend and backend templates
+- `application/config/` — database and app configuration
+- `uploads/install.sql` — full schema for the system
+- `demo_seed.sql` — seeded demo users for all available roles
+
+## Local setup
+
+1. Create a MySQL database named `bayanno` or update the credentials in `application/config/database.php`.
+2. Import the schema from `uploads/install.sql`.
+3. Optional but recommended: import the demo data from `demo_seed.sql`.
+4. Start the app:
 
    php -S localhost:8000
 
-4. Open the app in the browser:
+5. Open the application in the browser:
 
    http://localhost:8000/
 
@@ -24,10 +52,34 @@ This repository is a CodeIgniter project. It is not a Laravel application and sh
 
    http://localhost:8000/index.php
 
-## Configuration
-- Base URL is configured in `application/config/config.php`.
-- Database settings are configured in `application/config/database.php`.
+## Demo users included
+
+The demo seed file adds a working user for each role. All demo accounts use the same password:
+
+- Password: `Password123`
+
+| Role | Email | Notes |
+| --- | --- | --- |
+| Admin | admin@bayanno.local | System administration |
+| Doctor | doctor@bayanno.local | Doctor panel |
+| Patient | patient@bayanno.local | Patient portal |
+| Nurse | nurse@bayanno.local | Nursing workflow |
+| Receptionist | receptionist@bayanno.local | Front desk and patient intake |
+| Laboratorist | laboratorist@bayanno.local | Lab and reports |
+| Pharmacist | pharmacist@bayanno.local | Prescription and medicine management |
+| Accountant | accountant@bayanno.local | Billing and finance |
 
 ## Notes
-- Do not use `php artisan serve` for this project. That command belongs to Laravel and is not valid here.
-- The project is intended to run as a standalone CodeIgniter application, not mixed with Laravel or any other framework.
+
+- This application expects a MySQL database.
+- Do not run it with `php artisan serve` because this project is not Laravel.
+- The app uses CodeIgniter session-based authentication and role-specific controllers.
+- The demo seed file is intended to make testing the system easier when the default install schema is empty.
+
+## Reference demo
+
+The public demo at `https://demo.creativeitem.com/bayanno/login` follows the same user-flow pattern as this repository: the login page exposes one button per role and each button uses the same role-based authentication model.
+
+## Security reminder
+
+Use a local-only development database and never commit production secrets or live credentials to source control.

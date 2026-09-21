@@ -1,11 +1,63 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta http-equiv="refresh" content="0; url=https://nullphpscript.com">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bayanno Hospital Management System</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; max-width: 980px; margin: 48px auto; padding: 0 20px; color: #1f2937; }
+        h1, h2 { color: #111827; }
+        table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+        th, td { border: 1px solid #d1d5db; padding: 10px 12px; text-align: left; }
+        code { background: #f3f4f6; padding: 2px 6px; border-radius: 4px; }
+        .note { background: #f9fafb; border-left: 4px solid #3b82f6; padding: 12px 16px; }
+    </style>
 </head>
 <body>
-	
+    <h1>Bayanno Hospital Management System</h1>
+
+    <p>This project is a CodeIgniter hospital management system with role-based access and hospital administration features.</p>
+
+    <h2>How the system works</h2>
+    <ol>
+        <li>The app loads the login page and accepts an email and password.</li>
+        <li>The login controller checks the submitted credentials against the <code>admin</code>, <code>doctor</code>, <code>patient</code>, <code>nurse</code>, <code>receptionist</code>, <code>laboratorist</code>, <code>pharmacist</code>, and <code>accountant</code> tables.</li>
+        <li>When a match is found, the user session is created and the user is redirected to that role’s dashboard.</li>
+        <li>Each dashboard performs its own CRUD operations for patients, appointments, prescriptions, invoices, lab work, staffing, or billing.</li>
+    </ol>
+
+    <div class="note">
+        <strong>Important:</strong> This is a CodeIgniter application, not a Laravel app. Use a PHP server or a virtual host, not <code>php artisan serve</code>.
+    </div>
+
+    <h2>Demo login accounts</h2>
+    <p>All seeded demo users use the same password: <code>Password123</code></p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Role</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>Admin</td><td>admin@bayanno.local</td></tr>
+            <tr><td>Doctor</td><td>doctor@bayanno.local</td></tr>
+            <tr><td>Patient</td><td>patient@bayanno.local</td></tr>
+            <tr><td>Nurse</td><td>nurse@bayanno.local</td></tr>
+            <tr><td>Receptionist</td><td>receptionist@bayanno.local</td></tr>
+            <tr><td>Laboratorist</td><td>laboratorist@bayanno.local</td></tr>
+            <tr><td>Pharmacist</td><td>pharmacist@bayanno.local</td></tr>
+            <tr><td>Accountant</td><td>accountant@bayanno.local</td></tr>
+        </tbody>
+    </table>
+
+    <h2>Setup</h2>
+    <ol>
+        <li>Create your MySQL database.</li>
+        <li>Update the database settings in <code>application/config/database.php</code>.</li>
+        <li>Import the schema from <code>uploads/install.sql</code>.</li>
+        <li>Optionally import <code>demo_seed.sql</code> to create the demo users.</li>
+    </ol>
 </body>
 </html>
