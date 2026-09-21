@@ -1,6 +1,10 @@
 # Bayanno Hospital Management System
 
+Online system: https://hospital-system.duckdns.org/
+
 This repository contains a CodeIgniter-based hospital management system for patient, doctor, and administrative workflows. It is not a Laravel project and should be run as a standard CodeIgniter application.
+
+If the project is not installed on your local machine, the online working system is available at https://hospital-system.duckdns.org/.
 
 ## What the system does
 
@@ -79,6 +83,12 @@ The demo seed file adds a working user for each role. All demo accounts use the 
 ## Reference demo
 
 The public demo at `https://demo.creativeitem.com/bayanno/login` follows the same user-flow pattern as this repository: the login page exposes one button per role and each button uses the same role-based authentication model.
+
+## Hosted deployment
+
+Live online system: https://hospital-system.duckdns.org/
+
+Use this URL when you want to access the online hospital system without running the project locally.
 
 ## Security reminder
 
