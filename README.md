@@ -90,6 +90,23 @@ Live online system: https://hospital-system.duckdns.org/
 
 Use this URL when you want to access the online hospital system without running the project locally.
 
+## Demo login accounts
+
+All seeded demo users use the same password:
+
+- Password: `Password123`
+
+| Role | Email |
+| --- | --- |
+| Admin | admin@bayanno.local |
+| Doctor | doctor@bayanno.local |
+| Patient | patient@bayanno.local |
+| Nurse | nurse@bayanno.local |
+| Receptionist | receptionist@bayanno.local |
+| Laboratorist | laboratorist@bayanno.local |
+| Pharmacist | pharmacist@bayanno.local |
+| Accountant | accountant@bayanno.local |
+
 ## Security reminder
 
 Use a local-only development database and never commit production secrets or live credentials to source control.
